@@ -10,6 +10,6 @@ services:
     branch: main
     envVars:
       - key: TELEGRAM_BOT_TOKEN
-        value: "8100909334:AAHm7_bFkU9lZwrL7P7KGb6jXBC04fH7uHo"
+        value: "7411394370:AAFQRKC4U930oKPmvQ4dnpvk6ejKoJ0SCJQ"
       - key: TELEGRAM_CHAT_ID
         value: "-1002128827347"
