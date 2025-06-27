@@ -1,6 +1,6 @@
 services:
   - type: web
-    name: faacan-telegram-bot
+    name: faacan-tradingview-bot
     runtime: python
     buildCommand: "pip install -r requirements.txt"
     startCommand: "python main.py"
@@ -12,4 +12,4 @@ services:
       - key: TELEGRAM_BOT_TOKEN
         value: 7411394370:AAFQRKC4U930oKPmvQ4dnpvk6ejKoJ0SCJQ
       - key: TELEGRAM_CHAT_ID
-        value: -1002663732392
+        value: -1002128827347
