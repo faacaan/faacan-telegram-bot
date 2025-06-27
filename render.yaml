@@ -10,6 +10,6 @@ services:
     branch: main
     envVars:
       - key: TELEGRAM_BOT_TOKEN
-        fromGroup: telegram-config
+        value: "8182921257:AAHFJ5rUz2ST9asVMoV1ZSYf7JmmTFvUE6c"
       - key: TELEGRAM_CHAT_ID
-        fromGroup: telegram-config
+        value: "-1002128827347"
