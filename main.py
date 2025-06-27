@@ -4,32 +4,26 @@ import os
 
 app = Flask(__name__)
 
+# Környezeti változók (Renderen beállítva)
 TOKEN = os.getenv("TELEGRAM_BOT_TOKEN")
 CHAT_ID = os.getenv("TELEGRAM_CHAT_ID")
+
 bot = telegram.Bot(token=TOKEN)
 
-@app.route('/')
-def home():
-    return 'Faacan bot aktív!'
+@app.route("/", methods=["GET"])
+def index():
+    return "✅ A bot fut Renderen! (GET)"
 
-@app.route('/webhook', methods=['POST'])
+@app.route("/", methods=["POST"])
 def webhook():
     try:
         data = request.json
-        message = f"""
-📊 ÚJ TRADINGVIEW SZIGNÁL
-
-💥 Pár: {data.get('pair')}
-🎯 Irány: {data.get('direction')}
-🎯 Entry: {data.get('entry')}
-📍 SL: {data.get('sl')}
-🎯 TP: {data.get('tp')}
-"""
-        bot.send_message(chat_id=CHAT_ID, text=message.strip())
-        return 'OK', 200
+        message = f"📩 Új TradingView jelzés:\n\n{data}"
+        bot.send_message(chat_id=CHAT_ID, text=message)
+        return "✅ Üzenet elküldve Telegramra", 200
     except Exception as e:
-        print(f"❌ Hiba: {e}")
-        return 'Hiba', 500
+        return f"❌ Hiba az üzenetküldés során: {e}", 500
 
-if __name__ == '__main__':
-    app.run()
+if __name__ == "__main__":
+    port = int(os.environ.get("PORT", 10000))
+    app.run(host="0.0.0.0", port=port)
