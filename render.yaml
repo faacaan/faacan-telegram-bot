@@ -1,0 +1,16 @@
+services:
+  - type: web
+    name: faacan-telegram-bot
+    runtime: python
+    buildCommand: "pip install -r requirements.txt"
+    startCommand: "python main.py"
+    env: python
+    region: frankfurt
+    plan: free
+    branch: main
+    pythonVersion: 3.10.13
+    envVars:
+      - key: TELEGRAM_BOT_TOKEN
+        fromGroup: telegram-config
+      - key: TELEGRAM_CHAT_ID
+        fromGroup: telegram-config
