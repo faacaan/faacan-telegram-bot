@@ -8,8 +8,6 @@ services:
     region: frankfurt
     plan: free
     branch: main
-    build:
-      pythonVersion: 3.10.13
     envVars:
       - key: TELEGRAM_BOT_TOKEN
         fromGroup: telegram-config
