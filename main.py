@@ -1,16 +1,13 @@
-import os
 import telegram
-from telegram.error import TelegramError
+import os
 
-# Környezeti változók
-BOT_TOKEN = os.environ.get("TELEGRAM_BOT_TOKEN")
-CHAT_ID = os.environ.get("TELEGRAM_CHAT_ID")
+TOKEN = os.getenv("TELEGRAM_BOT_TOKEN")
+CHAT_ID = os.getenv("TELEGRAM_CHAT_ID")  # Vagy ideiglenesen írd be direktbe a saját user ID-dat (pl.: 123456789)
 
-# Telegram bot inicializálása
-bot = telegram.Bot(token=BOT_TOKEN)
+bot = telegram.Bot(token=TOKEN)
 
-# Üzenet küldése tesztként
 try:
-    bot.send_message(chat_id=CHAT_ID, text="🚀 Faacan bot aktív és működik!")
-except TelegramError as e:
-    print(f"Hiba az üzenetküldés során: {e}")
+    bot.send_message(chat_id=CHAT_ID, text="✅ Sikeres kapcsolat: A bot működik!")
+    print("✅ Üzenet elküldve sikeresen.")
+except Exception as e:
+    print(f"❌ Hiba történt: {e}")
